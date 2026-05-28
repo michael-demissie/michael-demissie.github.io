@@ -258,7 +258,7 @@ function filterSkills(domain, btn) {
 // ============================================
 // Floating Nav Dots
 // ============================================
-const dotSections = ['hero', 'about', 'education', 'skills', 'projects', 'experience', 'contact'];
+const dotSections = ['hero', 'about', 'education', 'skills', 'experience', 'projects', 'contact'];
 const dots = document.querySelectorAll('.nav-dot');
 
 function scrollToSection(id) {
