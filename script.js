@@ -172,16 +172,7 @@ document.querySelectorAll('.section, .project-card, .skill-card, .timeline-item,
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(section => {
-    const top = section.offsetTop - 120;
-    if (window.scrollY >= top) current = section.getAttribute('id');
-  });
-  navLinks.forEach(link => {
-    link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--gold)' : '';
-  });
-});
+
 
 // ============================================
 // Video Modal
@@ -273,6 +264,9 @@ window.addEventListener('scroll', () => {
   });
   dots.forEach((dot, i) => {
     dot.classList.toggle('active', dotSections[i] === current);
+  });
+  navLinks.forEach(link => {
+    link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--gold)' : '';
   });
 });
 
