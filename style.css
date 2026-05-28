@@ -1226,8 +1226,8 @@ footer {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 130px;
-  height: 130px;
+  width: 180px;
+  height: 80px;
   background: var(--gold);
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   border-radius: 0 0 4px 0;
