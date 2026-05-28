@@ -78,59 +78,110 @@
   <section id="skills" class="section skills">
     <div class="section-label">02 / Skills</div>
     <h2>Technical <span class="gold">Arsenal</span></h2>
+    <div class="skills-filter">
+      <button class="filter-btn active" onclick="filterSkills('all', this)">All</button>
+      <button class="filter-btn" onclick="filterSkills('de', this)">Data Engineering</button>
+      <button class="filter-btn" onclick="filterSkills('ml', this)">Machine Learning</button>
+      <button class="filter-btn" onclick="filterSkills('fs', this)">Full Stack</button>
+    </div>
     <div class="skills-grid">
 
-      <div class="skill-card">
-        <div class="skill-icon">⚙️</div>
-        <h3>Data Engineering</h3>
+      <div class="skill-card" data-domain="de">
+        <div class="skill-card-header">
+          <span class="skill-domain-tag de">Data Engineering</span>
+        </div>
+        <h3>Pipeline & Orchestration</h3>
         <div class="tags">
-          <span>Apache Airflow</span><span>Apache Spark</span><span>dbt</span>
-          <span>Kafka</span><span>ETL/ELT</span><span>Data Modeling</span>
+          <span>Apache Airflow</span><span>Apache Spark</span><span>Kafka</span>
+          <span>dbt</span><span>Flink</span><span>ETL/ELT</span><span>Data Modeling</span>
         </div>
       </div>
 
-      <div class="skill-card">
-        <div class="skill-icon">☁️</div>
-        <h3>Cloud & Infrastructure</h3>
+      <div class="skill-card" data-domain="de">
+        <div class="skill-card-header">
+          <span class="skill-domain-tag de">Data Engineering</span>
+        </div>
+        <h3>Cloud & Warehousing</h3>
         <div class="tags">
           <span>AWS S3</span><span>AWS Glue</span><span>Redshift</span>
-          <span>Lambda</span><span>Terraform</span><span>Snowflake</span><span>BigQuery</span>
+          <span>Snowflake</span><span>BigQuery</span><span>Lambda</span><span>Terraform</span>
         </div>
       </div>
 
-      <div class="skill-card">
-        <div class="skill-icon">🧠</div>
-        <h3>ML & APIs</h3>
-        <div class="tags">
-          <span>HuggingFace</span><span>LightGBM</span><span>MLflow</span>
-          <span>FastAPI</span><span>scikit-learn</span>
+      <div class="skill-card" data-domain="de">
+        <div class="skill-card-header">
+          <span class="skill-domain-tag de">Data Engineering</span>
         </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">🗄️</div>
-        <h3>Databases</h3>
+        <h3>Databases & Storage</h3>
         <div class="tags">
           <span>PostgreSQL</span><span>MySQL</span><span>Redis</span>
-          <span>SQLite</span><span>MariaDB</span>
+          <span>Elasticsearch</span><span>SQLite</span><span>MariaDB</span>
         </div>
       </div>
 
-      <div class="skill-card">
-        <div class="skill-icon">💻</div>
-        <h3>Languages & Tools</h3>
+      <div class="skill-card" data-domain="ml">
+        <div class="skill-card-header">
+          <span class="skill-domain-tag ml">Machine Learning</span>
+        </div>
+        <h3>Frameworks & Models</h3>
         <div class="tags">
-          <span>Python</span><span>SQL</span><span>Bash</span>
-          <span>Git</span><span>Docker</span><span>CI/CD</span><span>Node.js</span>
+          <span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span>
+          <span>HuggingFace</span><span>BERT</span><span>GPT</span><span>MLflow</span>
         </div>
       </div>
 
-      <div class="skill-card">
-        <div class="skill-icon">📊</div>
-        <h3>Visualization</h3>
+      <div class="skill-card" data-domain="ml">
+        <div class="skill-card-header">
+          <span class="skill-domain-tag ml">Machine Learning</span>
+        </div>
+        <h3>ML Infrastructure</h3>
+        <div class="tags">
+          <span>MLflow</span><span>Feature Stores</span><span>Model Serving</span>
+          <span>A/B Testing</span><span>Pandas</span><span>NumPy</span>
+        </div>
+      </div>
+
+      <div class="skill-card" data-domain="ml">
+        <div class="skill-card-header">
+          <span class="skill-domain-tag ml">Machine Learning</span>
+        </div>
+        <h3>NLP & AI</h3>
+        <div class="tags">
+          <span>LangChain</span><span>OpenAI API</span><span>DistilBERT</span>
+          <span>TF-IDF</span><span>Text Classification</span><span>Embeddings</span>
+        </div>
+      </div>
+
+      <div class="skill-card" data-domain="fs">
+        <div class="skill-card-header">
+          <span class="skill-domain-tag fs">Full Stack</span>
+        </div>
+        <h3>Backend & APIs</h3>
+        <div class="tags">
+          <span>FastAPI</span><span>Node.js</span><span>Express</span>
+          <span>Flask</span><span>REST</span><span>JWT Auth</span><span>Docker</span>
+        </div>
+      </div>
+
+      <div class="skill-card" data-domain="fs">
+        <div class="skill-card-header">
+          <span class="skill-domain-tag fs">Full Stack</span>
+        </div>
+        <h3>Languages & DevOps</h3>
+        <div class="tags">
+          <span>Python</span><span>SQL</span><span>JavaScript</span>
+          <span>Bash</span><span>Git</span><span>CI/CD</span><span>Kubernetes</span>
+        </div>
+      </div>
+
+      <div class="skill-card" data-domain="fs">
+        <div class="skill-card-header">
+          <span class="skill-domain-tag fs">Full Stack</span>
+        </div>
+        <h3>Visualization & BI</h3>
         <div class="tags">
           <span>Tableau</span><span>Power BI</span><span>Plotly</span>
-          <span>Dash</span><span>Pandas</span><span>NumPy</span>
+          <span>Dash</span><span>Grafana</span><span>Looker</span>
         </div>
       </div>
 

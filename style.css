@@ -927,3 +927,73 @@ footer {
     font-size: 0.85rem;
   }
 }
+
+/* ============================================
+   SKILLS FILTER
+   ============================================ */
+.skills-filter {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.filter-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+.skill-card-header {
+  margin-bottom: 0.8rem;
+}
+
+.skill-domain-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+.skill-domain-tag.de {
+  background: rgba(201,168,76,0.1);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+}
+
+.skill-domain-tag.ml {
+  background: rgba(100,180,255,0.08);
+  color: #64b4ff;
+  border: 1px solid rgba(100,180,255,0.25);
+}
+
+.skill-domain-tag.fs {
+  background: rgba(100,220,150,0.08);
+  color: #64dc96;
+  border: 1px solid rgba(100,220,150,0.25);
+}
+
+.skill-card.hidden {
+  display: none;
+}

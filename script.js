@@ -239,3 +239,18 @@ function toggleMenu() {
 function closeMenu() {
   document.getElementById('navLinks').classList.remove('open');
 }
+
+// ============================================
+// Skills Filter
+// ============================================
+function filterSkills(domain, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.skill-card').forEach(card => {
+    if (domain === 'all' || card.dataset.domain === domain) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
