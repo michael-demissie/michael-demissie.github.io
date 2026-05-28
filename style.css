@@ -1186,8 +1186,8 @@ footer {
 }
 
 .about-photo img {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 280px;
   object-fit: cover;
   border-radius: 4px;
   border: 2px solid var(--border);
