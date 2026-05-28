@@ -96,11 +96,13 @@ drawPipeline();
 // Typewriter
 // ============================================
 const twLines = [
-  '> building ETL pipelines at scale...',
-  '> training ML models on 1M+ records...',
-  '> deploying with Docker + AWS...',
-  '> ingesting 580K rows/day in real-time...',
-  '> engineering data that drives decisions...',
+  '> designing end-to-end data pipelines...',
+  '> building and deploying ML models to production...',
+  '> architecting cloud-native data infrastructure...',
+  '> transforming raw data into business intelligence...',
+  '> engineering real-time and batch data systems...',
+  '> building APIs that serve data at scale...',
+  '> automating workflows with Airflow and Docker...',
 ];
 let twIdx = 0;
 const twEl = document.getElementById('twText');
