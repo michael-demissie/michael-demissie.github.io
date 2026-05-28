@@ -1,5 +1,132 @@
 // ============================================
-// Scroll-triggered fade-in for sections
+// Pipeline Hero Animation
+// ============================================
+const canvas = document.getElementById('pipeCanvas');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const tools = [
+  'Python','Airflow','Spark','Kafka','PostgreSQL',
+  'AWS S3','Docker','dbt','MLflow','FastAPI',
+  'Snowflake','Redis','Terraform','HuggingFace','LightGBM',
+  'BigQuery','Redshift','scikit-learn','Pandas','Node.js'
+];
+
+const nodes = tools.map(label => ({
+  label,
+  x: Math.random(),
+  y: Math.random(),
+  vx: (Math.random() - 0.5) * 0.0004,
+  vy: (Math.random() - 0.5) * 0.0004,
+}));
+
+const edges = [];
+for (let i = 0; i < nodes.length; i++) {
+  for (let j = i + 1; j < nodes.length; j++) {
+    if (Math.random() < 0.25) edges.push([i, j]);
+  }
+}
+
+const particles = edges.map(e => ({
+  edge: e,
+  t: Math.random(),
+  speed: 0.001 + Math.random() * 0.002
+}));
+
+function drawPipeline() {
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  nodes.forEach(n => {
+    n.x += n.vx; n.y += n.vy;
+    if (n.x < 0.02 || n.x > 0.98) n.vx *= -1;
+    if (n.y < 0.02 || n.y > 0.98) n.vy *= -1;
+  });
+
+  edges.forEach(([a, b]) => {
+    const na = nodes[a], nb = nodes[b];
+    const dx = (na.x - nb.x) * W, dy = (na.y - nb.y) * H;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist < 320) {
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(201,168,76,${0.12 * (1 - dist/320)})`;
+      ctx.lineWidth = 0.8;
+      ctx.moveTo(na.x * W, na.y * H);
+      ctx.lineTo(nb.x * W, nb.y * H);
+      ctx.stroke();
+    }
+  });
+
+  particles.forEach(p => {
+    p.t += p.speed;
+    if (p.t > 1) p.t = 0;
+    const [a, b] = p.edge;
+    const na = nodes[a], nb = nodes[b];
+    const px = (na.x + (nb.x - na.x) * p.t) * W;
+    const py = (na.y + (nb.y - na.y) * p.t) * H;
+    ctx.beginPath();
+    ctx.arc(px, py, 2, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(232,201,122,0.7)';
+    ctx.fill();
+  });
+
+  nodes.forEach(n => {
+    const x = n.x * W, y = n.y * H;
+    ctx.beginPath();
+    ctx.arc(x, y, 3, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(201,168,76,0.6)';
+    ctx.fill();
+    ctx.font = '10px monospace';
+    ctx.fillStyle = 'rgba(136,146,164,0.7)';
+    ctx.textAlign = 'center';
+    ctx.fillText(n.label, x, y - 8);
+  });
+
+  requestAnimationFrame(drawPipeline);
+}
+drawPipeline();
+
+// ============================================
+// Typewriter
+// ============================================
+const twLines = [
+  '> building ETL pipelines at scale...',
+  '> training ML models on 1M+ records...',
+  '> deploying with Docker + AWS...',
+  '> ingesting 580K rows/day in real-time...',
+  '> engineering data that drives decisions...',
+];
+let twIdx = 0;
+const twEl = document.getElementById('twText');
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+async function typeLoop() {
+  while (true) {
+    const line = twLines[twIdx % twLines.length];
+    for (let i = 0; i <= line.length; i++) {
+      twEl.textContent = line.slice(0, i);
+      await sleep(45 + Math.random() * 25);
+    }
+    await sleep(1800);
+    for (let i = line.length; i >= 0; i--) {
+      twEl.textContent = line.slice(0, i);
+      await sleep(18);
+    }
+    await sleep(300);
+    twIdx++;
+  }
+}
+typeLoop();
+
+// ============================================
+// Scroll-triggered fade-in
 // ============================================
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -56,7 +183,7 @@ function closeModal() {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeModal();
-    zoomOverlay.classList.remove('active');
+    if(zoomOverlay) zoomOverlay.classList.remove('active');
   }
 });
 
@@ -79,48 +206,3 @@ document.querySelectorAll('.project-visual img').forEach(img => {
 zoomOverlay.addEventListener('click', () => {
   zoomOverlay.classList.remove('active');
 });
-
-// ============================================
-// Hero Typewriter Effect
-// ============================================
-const lines = [
-  { text: '> whoami',                    delay: 0,    speed: 80,  pause: 400  },
-  { text: 'Michael Mulugeta Demissie',   delay: 0,    speed: 55,  pause: 300  },
-  { text: '> role',                      delay: 0,    speed: 80,  pause: 400  },
-  { text: 'Data Engineer | ML Infra',    delay: 0,    speed: 55,  pause: 300  },
-  { text: '> location',                  delay: 0,    speed: 80,  pause: 400  },
-  { text: 'Washington, DC',              delay: 0,    speed: 55,  pause: 300  },
-  { text: '> stack',                     delay: 0,    speed: 80,  pause: 400  },
-  { text: 'Python · Airflow · Spark · AWS · PostgreSQL · Docker', delay: 0, speed: 30, pause: 300 },
-  { text: '> status',                    delay: 0,    speed: 80,  pause: 400  },
-  { text: 'Open to full-time roles ✓',   delay: 0,    speed: 55,  pause: 600  },
-];
-
-const terminal = document.getElementById('hero-terminal');
-const cursor = document.getElementById('hero-cursor');
-
-async function typeLine(lineEl, text, speed) {
-  for (let i = 0; i < text.length; i++) {
-    lineEl.textContent += text[i];
-    await sleep(speed + Math.random() * 20);
-  }
-}
-
-function sleep(ms) {
-  return new Promise(r => setTimeout(r, ms));
-}
-
-async function runTerminal() {
-  await sleep(400);
-  for (const line of lines) {
-    const lineEl = document.createElement('div');
-    const isCommand = line.text.startsWith('>');
-    lineEl.className = isCommand ? 'term-cmd' : 'term-output';
-    terminal.insertBefore(lineEl, cursor);
-    await typeLine(lineEl, line.text, line.speed);
-    await sleep(line.pause);
-  }
-  cursor.style.animation = 'blink 1s step-end infinite';
-}
-
-runTerminal();
