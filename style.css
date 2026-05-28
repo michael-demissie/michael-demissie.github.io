@@ -1235,3 +1235,75 @@ footer {
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   border-radius: 0 0 4px 0;
 }
+
+/* ============================================
+   EDUCATION
+   ============================================ */
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.education-card {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--navy-card);
+  transition: border-color 0.3s;
+}
+
+.education-card:hover {
+  border-color: var(--gold-dim);
+}
+
+.edu-year {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--gold);
+  letter-spacing: 1.5px;
+  margin-bottom: 0.8rem;
+}
+
+.edu-degree {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.edu-school {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.2rem;
+}
+
+.edu-location {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.edu-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.edu-tags span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  color: var(--gold-light);
+}
+
+@media (max-width: 768px) {
+  .education-grid { grid-template-columns: 1fr; }
+}
