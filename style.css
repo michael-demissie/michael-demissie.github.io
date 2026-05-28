@@ -1167,3 +1167,13 @@ footer {
     letter-spacing: 1px;
   }
 }
+
+@media (max-width: 768px) {
+  .hero-center .hero-eyebrow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.52rem;
+    letter-spacing: 1px;
+  }
+}
