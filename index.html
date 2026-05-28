@@ -25,7 +25,7 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero hero-pipeline">
+  <section id="hero" class="hero hero-pipeline">
     <canvas id="pipeCanvas" class="pipe-canvas"></canvas>
     <div class="hero-center">
       <div class="hero-eyebrow">Data Engineer · ML Engineer · Full Stack Developer</div>
@@ -345,6 +345,16 @@
       <button class="modal-close" onclick="closeModal()">✕</button>
       <video id="modal-video" controls playsinline></video>
     </div>
+  </div>
+
+  <!-- NAV DOTS -->
+  <div class="nav-dots">
+    <div class="nav-dot active" onclick="scrollToSection('hero')"><span class="nav-dot-label">Home</span></div>
+    <div class="nav-dot" onclick="scrollToSection('about')"><span class="nav-dot-label">About</span></div>
+    <div class="nav-dot" onclick="scrollToSection('skills')"><span class="nav-dot-label">Skills</span></div>
+    <div class="nav-dot" onclick="scrollToSection('projects')"><span class="nav-dot-label">Projects</span></div>
+    <div class="nav-dot" onclick="scrollToSection('experience')"><span class="nav-dot-label">Experience</span></div>
+    <div class="nav-dot" onclick="scrollToSection('contact')"><span class="nav-dot-label">Contact</span></div>
   </div>
 
   <script src="script.js"></script>

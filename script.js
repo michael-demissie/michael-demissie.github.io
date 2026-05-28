@@ -254,3 +254,24 @@ function filterSkills(domain, btn) {
     }
   });
 }
+
+// ============================================
+// Floating Nav Dots
+// ============================================
+const dotSections = ['hero', 'about', 'skills', 'projects', 'experience', 'contact'];
+const dots = document.querySelectorAll('.nav-dot');
+
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+window.addEventListener('scroll', () => {
+  let current = 'hero';
+  dotSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 200) current = id;
+  });
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', dotSections[i] === current);
+  });
+});
