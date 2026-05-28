@@ -54,7 +54,10 @@ function closeModal() {
 }
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Escape') {
+    closeModal();
+    zoomOverlay.classList.remove('active');
+  }
 });
 
 // ============================================
@@ -77,6 +80,47 @@ zoomOverlay.addEventListener('click', () => {
   zoomOverlay.classList.remove('active');
 });
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') zoomOverlay.classList.remove('active');
-});
+// ============================================
+// Hero Typewriter Effect
+// ============================================
+const lines = [
+  { text: '> whoami',                    delay: 0,    speed: 80,  pause: 400  },
+  { text: 'Michael Mulugeta Demissie',   delay: 0,    speed: 55,  pause: 300  },
+  { text: '> role',                      delay: 0,    speed: 80,  pause: 400  },
+  { text: 'Data Engineer | ML Infra',    delay: 0,    speed: 55,  pause: 300  },
+  { text: '> location',                  delay: 0,    speed: 80,  pause: 400  },
+  { text: 'Washington, DC',              delay: 0,    speed: 55,  pause: 300  },
+  { text: '> stack',                     delay: 0,    speed: 80,  pause: 400  },
+  { text: 'Python · Airflow · Spark · AWS · PostgreSQL · Docker', delay: 0, speed: 30, pause: 300 },
+  { text: '> status',                    delay: 0,    speed: 80,  pause: 400  },
+  { text: 'Open to full-time roles ✓',   delay: 0,    speed: 55,  pause: 600  },
+];
+
+const terminal = document.getElementById('hero-terminal');
+const cursor = document.getElementById('hero-cursor');
+
+async function typeLine(lineEl, text, speed) {
+  for (let i = 0; i < text.length; i++) {
+    lineEl.textContent += text[i];
+    await sleep(speed + Math.random() * 20);
+  }
+}
+
+function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
+async function runTerminal() {
+  await sleep(400);
+  for (const line of lines) {
+    const lineEl = document.createElement('div');
+    const isCommand = line.text.startsWith('>');
+    lineEl.className = isCommand ? 'term-cmd' : 'term-output';
+    terminal.insertBefore(lineEl, cursor);
+    await typeLine(lineEl, line.text, line.speed);
+    await sleep(line.pause);
+  }
+  cursor.style.animation = 'blink 1s step-end infinite';
+}
+
+runTerminal();
