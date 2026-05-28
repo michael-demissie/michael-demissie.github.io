@@ -795,3 +795,12 @@ footer {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+.hero-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.1em;
+  background: var(--gold);
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
