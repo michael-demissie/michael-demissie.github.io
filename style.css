@@ -1153,3 +1153,10 @@ footer {
 @media (min-width: 769px) {
   #back-to-top { display: none; }
 }
+
+@media (max-width: 768px) {
+  .hero-eyebrow {
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+  }
+}
