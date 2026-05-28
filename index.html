@@ -14,13 +14,14 @@
   <!-- NAV -->
   <nav>
     <div class="nav-logo">MD</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+      <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+      <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">&#9776;</button>
   </nav>
 
   <!-- HERO -->

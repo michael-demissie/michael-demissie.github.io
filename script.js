@@ -228,3 +228,14 @@ document.querySelectorAll('.project-visual img').forEach(img => {
 zoomOverlay.addEventListener('click', () => {
   zoomOverlay.classList.remove('active');
 });
+
+// ============================================
+// Hamburger Menu
+// ============================================
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+}
