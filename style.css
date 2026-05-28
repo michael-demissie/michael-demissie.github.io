@@ -1171,3 +1171,45 @@ footer {
     font-size: clamp(2rem, 9vw, 3rem);
   }
 }
+
+/* ============================================
+   ABOUT PHOTO
+   ============================================ */
+.about-grid {
+  grid-template-columns: 220px 1fr 1fr;
+}
+
+.about-photo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.about-photo img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 2px solid var(--border);
+  filter: grayscale(20%);
+  transition: filter 0.3s;
+}
+
+.about-photo img:hover {
+  filter: grayscale(0%);
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    justify-content: flex-start;
+  }
+
+  .about-photo img {
+    width: 150px;
+    height: 150px;
+  }
+}
