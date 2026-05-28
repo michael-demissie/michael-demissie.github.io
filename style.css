@@ -1004,9 +1004,7 @@ footer {
 @media (max-width: 768px) {
 
 
-  .hero-center .hero-name {
-    font-size: clamp(2.4rem, 10vw, 3.5rem);
-  }
+
 
   .hero-typewriter {
     font-size: 0.78rem;
@@ -1165,5 +1163,11 @@ footer {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-center .hero-name {
+    font-size: clamp(2rem, 9vw, 3rem);
   }
 }
