@@ -275,3 +275,14 @@ window.addEventListener('scroll', () => {
     dot.classList.toggle('active', dotSections[i] === current);
   });
 });
+
+// ============================================
+// Scroll Progress Bar
+// ============================================
+const scrollBar = document.getElementById('scroll-bar');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  scrollBar.style.width = progress + '%';
+});
