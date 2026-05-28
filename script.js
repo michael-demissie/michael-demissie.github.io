@@ -33,3 +33,26 @@ window.addEventListener('scroll', () => {
     link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--gold)' : '';
   });
 });
+
+// ============================================
+// Video Modal
+// ============================================
+function openModal(src) {
+  const modal = document.getElementById('video-modal');
+  const video = document.getElementById('modal-video');
+  video.src = src;
+  modal.classList.add('active');
+  video.play();
+}
+
+function closeModal() {
+  const modal = document.getElementById('video-modal');
+  const video = document.getElementById('modal-video');
+  video.pause();
+  video.src = '';
+  modal.classList.remove('active');
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});

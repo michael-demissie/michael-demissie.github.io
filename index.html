@@ -163,7 +163,7 @@
                 GitHub
               </a>
               <!-- Uncomment and add your video link below -->
-              <a href="videos/Finresolve routing system.mp4" target="_blank" class="link-btn video">▶ Demo Video</a>
+              <a href="#" onclick="openModal('videos/Finresolve routing system.mp4')" class="link-btn video">▶ Demo Video</a>
             </div>
           </div>
           <div class="project-visual">
@@ -209,7 +209,7 @@
                 GitHub
               </a>
               <!-- Uncomment and add your video link below -->
-              <a href="videos/dc-metro-pipeline-demo.mp4" target="_blank" class="link-btn video">▶ Demo Video</a>
+              <a href="#" onclick="openModal('videos/dc-metro-pipeline-demo.mp4')" class="link-btn video">▶ Demo Video</a>
             </div>
           </div>
           <div class="project-visual">
@@ -299,6 +299,14 @@
   <footer>
     <p>© 2026 Michael Mulugeta Demissie · Built with GitHub Pages</p>
   </footer>
+
+  <!-- VIDEO MODAL -->
+  <div id="video-modal" class="modal-overlay" onclick="closeModal()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <video id="modal-video" controls playsinline></video>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
