@@ -1183,6 +1183,8 @@ footer {
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  position: relative;
+  width: fit-content;
 }
 
 .about-photo img {
