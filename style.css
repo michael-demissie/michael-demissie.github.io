@@ -1214,3 +1214,21 @@ footer {
     height: 150px;
   }
 }
+
+/* ============================================
+   PHOTO BADGE
+   ============================================ */
+.about-photo {
+  position: relative;
+}
+
+.photo-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background: var(--gold);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  border-radius: 0 0 4px 0;
+}
