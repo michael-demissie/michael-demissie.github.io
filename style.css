@@ -1002,10 +1002,7 @@ footer {
    MOBILE HERO FIXES
    ============================================ */
 @media (max-width: 768px) {
-  .hero-center .hero-eyebrow {
-    font-size: 0.6rem;
-    letter-spacing: 2px;
-  }
+
 
   .hero-center .hero-name {
     font-size: clamp(2.4rem, 10vw, 3.5rem);
@@ -1154,26 +1151,19 @@ footer {
   #back-to-top { display: none; }
 }
 
-@media (max-width: 768px) {
-  .hero-eyebrow {
-    font-size: 0.55rem;
-    letter-spacing: 1.5px;
-  }
-}
 
-@media (max-width: 375px) {
-  .hero-eyebrow {
-    font-size: 0.48rem;
-    letter-spacing: 1px;
-  }
-}
+
+
+
+
 
 @media (max-width: 768px) {
   .hero-center .hero-eyebrow {
+    font-size: 0.5rem;
+    letter-spacing: 1px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 0.52rem;
-    letter-spacing: 1px;
+    max-width: 100%;
   }
 }
