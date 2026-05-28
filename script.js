@@ -11,79 +11,99 @@ function resize() {
 resize();
 window.addEventListener('resize', resize);
 
-const tools = [
-  'Python','Airflow','Spark','Kafka','PostgreSQL',
-  'AWS S3','Docker','dbt','MLflow','FastAPI',
-  'Snowflake','Redis','Terraform','HuggingFace','LightGBM',
-  'BigQuery','Redshift','scikit-learn','Pandas','Node.js'
+const allTools = [
+  'Python','Apache Airflow','Apache Spark','Kafka','PostgreSQL',
+  'AWS S3','Docker','dbt','MLflow','FastAPI','Snowflake','Redis',
+  'Terraform','PyTorch','TensorFlow','GPT-4','BERT','Kubernetes',
+  'BigQuery','Redshift','scikit-learn','Pandas','Node.js','Grafana',
+  'Prometheus','Databricks','Delta Lake','Flink','Elasticsearch',
+  'OpenAI API','LangChain','Pinecone','Spark Streaming','Hive',
+  'Presto','Trino','Great Expectations','Prefect','dbt Cloud',
+  'AWS Glue','AWS Lambda','GCP','Azure','Looker','Tableau'
 ];
 
-const nodes = tools.map(label => ({
-  label,
-  x: Math.random(),
-  y: Math.random(),
-  vx: (Math.random() - 0.5) * 0.0004,
-  vy: (Math.random() - 0.5) * 0.0004,
-}));
+const MAX_NODES = 16;
+const nodes = [];
 
-const edges = [];
-for (let i = 0; i < nodes.length; i++) {
-  for (let j = i + 1; j < nodes.length; j++) {
-    if (Math.random() < 0.25) edges.push([i, j]);
-  }
+function spawnNode(label) {
+  return {
+    label,
+    x: Math.random(),
+    y: Math.random(),
+    vx: (Math.random() - 0.5) * 0.0004,
+    vy: (Math.random() - 0.5) * 0.0004,
+    opacity: 0,
+    fadeIn: true,
+    fadeOut: false,
+    life: 8000 + Math.random() * 8000,
+    born: Date.now(),
+  };
 }
 
-const particles = edges.map(e => ({
-  edge: e,
-  t: Math.random(),
-  speed: 0.001 + Math.random() * 0.002
-}));
+const usedLabels = new Set();
+function getUnusedLabel() {
+  const available = allTools.filter(t => !usedLabels.has(t));
+  if (available.length === 0) { usedLabels.clear(); return allTools[Math.floor(Math.random()*allTools.length)]; }
+  const label = available[Math.floor(Math.random() * available.length)];
+  usedLabels.add(label);
+  return label;
+}
+
+for (let i = 0; i < MAX_NODES; i++) {
+  const n = spawnNode(getUnusedLabel());
+  n.opacity = Math.random();
+  n.born = Date.now() - Math.random() * n.life;
+  nodes.push(n);
+}
 
 function drawPipeline() {
   const W = canvas.width, H = canvas.height;
   ctx.clearRect(0, 0, W, H);
+  const now = Date.now();
 
-  nodes.forEach(n => {
+  nodes.forEach((n, i) => {
+    const age = now - n.born;
+    if (age > n.life - 1500) {
+      n.opacity = Math.max(0, n.opacity - 0.008);
+      if (n.opacity <= 0) {
+        usedLabels.delete(n.label);
+        const fresh = spawnNode(getUnusedLabel());
+        nodes[i] = fresh;
+        return;
+      }
+    } else if (n.opacity < 1) {
+      n.opacity = Math.min(1, n.opacity + 0.008);
+    }
     n.x += n.vx; n.y += n.vy;
     if (n.x < 0.02 || n.x > 0.98) n.vx *= -1;
     if (n.y < 0.02 || n.y > 0.98) n.vy *= -1;
   });
 
-  edges.forEach(([a, b]) => {
-    const na = nodes[a], nb = nodes[b];
-    const dx = (na.x - nb.x) * W, dy = (na.y - nb.y) * H;
-    const dist = Math.sqrt(dx*dx + dy*dy);
-    if (dist < 320) {
-      ctx.beginPath();
-      ctx.strokeStyle = `rgba(201,168,76,${0.12 * (1 - dist/320)})`;
-      ctx.lineWidth = 0.8;
-      ctx.moveTo(na.x * W, na.y * H);
-      ctx.lineTo(nb.x * W, nb.y * H);
-      ctx.stroke();
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const na = nodes[i], nb = nodes[j];
+      const dx = (na.x - nb.x) * W, dy = (na.y - nb.y) * H;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      const alpha = Math.min(na.opacity, nb.opacity);
+      if (dist < 300) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(201,168,76,${0.12 * alpha * (1 - dist/300)})`;
+        ctx.lineWidth = 0.8;
+        ctx.moveTo(na.x * W, na.y * H);
+        ctx.lineTo(nb.x * W, nb.y * H);
+        ctx.stroke();
+      }
     }
-  });
-
-  particles.forEach(p => {
-    p.t += p.speed;
-    if (p.t > 1) p.t = 0;
-    const [a, b] = p.edge;
-    const na = nodes[a], nb = nodes[b];
-    const px = (na.x + (nb.x - na.x) * p.t) * W;
-    const py = (na.y + (nb.y - na.y) * p.t) * H;
-    ctx.beginPath();
-    ctx.arc(px, py, 2, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(232,201,122,0.7)';
-    ctx.fill();
-  });
+  }
 
   nodes.forEach(n => {
     const x = n.x * W, y = n.y * H;
     ctx.beginPath();
     ctx.arc(x, y, 3, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(201,168,76,0.6)';
+    ctx.fillStyle = `rgba(201,168,76,${0.6 * n.opacity})`;
     ctx.fill();
     ctx.font = '10px monospace';
-    ctx.fillStyle = 'rgba(136,146,164,0.7)';
+    ctx.fillStyle = `rgba(136,146,164,${n.opacity * 0.8})`;
     ctx.textAlign = 'center';
     ctx.fillText(n.label, x, y - 8);
   });
