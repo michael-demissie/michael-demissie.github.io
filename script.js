@@ -269,7 +269,7 @@ window.addEventListener('scroll', () => {
   let current = 'hero';
   dotSections.forEach(id => {
     const el = document.getElementById(id);
-    if (el && window.scrollY >= el.offsetTop - 200) current = id;
+    if (el && window.scrollY >= el.offsetTop - window.innerHeight / 2) current = id;
   });
   dots.forEach((dot, i) => {
     dot.classList.toggle('active', dotSections[i] === current);
