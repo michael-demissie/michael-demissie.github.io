@@ -56,3 +56,27 @@ function closeModal() {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
+
+// ============================================
+// Zoomable Images
+// ============================================
+const zoomOverlay = document.createElement('div');
+zoomOverlay.className = 'img-zoom-overlay';
+const zoomImg = document.createElement('img');
+zoomOverlay.appendChild(zoomImg);
+document.body.appendChild(zoomOverlay);
+
+document.querySelectorAll('.project-visual img').forEach(img => {
+  img.addEventListener('click', () => {
+    zoomImg.src = img.src;
+    zoomOverlay.classList.add('active');
+  });
+});
+
+zoomOverlay.addEventListener('click', () => {
+  zoomOverlay.classList.remove('active');
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') zoomOverlay.classList.remove('active');
+});
