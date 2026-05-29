@@ -653,31 +653,47 @@ footer {
 }
 
 /* ============================================
-   VIDEO MODAL
+   VIDEO MODAL — PREMIUM
    ============================================ */
 .modal-overlay {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
   align-items: center;
   justify-content: center;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease;
 }
 
 .modal-overlay.active {
   display: flex;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(16px);
+  animation: modalBgIn 0.4s ease forwards;
+}
+
+@keyframes modalBgIn {
+  from { background: rgba(0,0,0,0); backdrop-filter: blur(0px); }
+  to   { background: rgba(0,0,0,0.92); backdrop-filter: blur(16px); }
 }
 
 .modal-box {
   position: relative;
   width: 90%;
-  max-width: 900px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  overflow: hidden;
+  max-width: 960px;
   background: var(--navy-card);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(201,168,76,0.1), 0 40px 80px rgba(0,0,0,0.8);
+  animation: modalBoxIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes modalBoxIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .modal-box video {
@@ -685,22 +701,43 @@ footer {
   display: block;
 }
 
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.2rem;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  background: rgba(201,168,76,0.03);
+}
+
+.modal-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
 .modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 10;
-  background: rgba(0,0,0,0.6);
-  border: 1px solid var(--border);
-  color: var(--white);
-  width: 32px;
-  height: 32px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  color: var(--muted);
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: rgba(201,168,76,0.2);
+  color: var(--gold);
+  border-color: var(--gold);
+  transform: rotate(90deg);
 }
 
 /* ============================================

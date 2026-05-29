@@ -177,10 +177,12 @@ const navLinks = document.querySelectorAll('.nav-links a');
 // ============================================
 // Video Modal
 // ============================================
-function openModal(src) {
+function openModal(src, title) {
   const modal = document.getElementById('video-modal');
   const video = document.getElementById('modal-video');
+  const titleEl = document.getElementById('modal-title');
   video.src = src;
+  if (titleEl) titleEl.textContent = title || 'Demo Video';
   modal.classList.add('active');
   video.play();
 }
