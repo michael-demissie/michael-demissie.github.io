@@ -297,3 +297,19 @@ window.addEventListener('load', () => {
     document.getElementById('loader').classList.add('hidden');
   }, 1900);
 });
+
+// ============================================
+// Scroll Fade-in Animations
+// ============================================
+const fadeEls = document.querySelectorAll('.skill-card, .project-card, .timeline-item, .stat, .education-card, .publication-card');
+fadeEls.forEach(el => el.classList.add('fade-in'));
+
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+
+fadeEls.forEach(el => fadeObserver.observe(el));
