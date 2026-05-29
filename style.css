@@ -669,14 +669,14 @@ footer {
 
 .modal-overlay.active {
   display: flex;
-  background: rgba(0, 0, 0, 0.92);
-  backdrop-filter: blur(16px);
+  background: rgba(5,10,25,0.75);
+  backdrop-filter: blur(20px);
   animation: modalBgIn 0.4s ease forwards;
 }
 
 @keyframes modalBgIn {
   from { background: rgba(0,0,0,0); backdrop-filter: blur(0px); }
-  to   { background: rgba(0,0,0,0.92); backdrop-filter: blur(16px); }
+  to   { background: rgba(5,10,25,0.75); backdrop-filter: blur(20px); }
 }
 
 .modal-box {
@@ -719,24 +719,25 @@ footer {
 }
 
 .modal-close {
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.2);
-  color: var(--muted);
-  width: 28px;
-  height: 28px;
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold);
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 0.75rem;
+  font-size: 1rem;
+  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: all 0.25s;
+  flex-shrink: 0;
 }
 
 .modal-close:hover {
-  background: rgba(201,168,76,0.2);
-  color: var(--gold);
-  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--navy);
   transform: rotate(90deg);
 }
 
