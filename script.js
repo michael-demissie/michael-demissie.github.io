@@ -12,14 +12,12 @@ resize();
 window.addEventListener('resize', resize);
 
 const allTools = [
-  'Python','Apache Airflow','Apache Spark','Kafka','PostgreSQL',
-  'AWS S3','Docker','dbt','MLflow','FastAPI','Snowflake','Redis',
-  'Terraform','PyTorch','TensorFlow','GPT-4','BERT','Kubernetes',
-  'BigQuery','Redshift','scikit-learn','Pandas','Node.js','Grafana',
-  'Prometheus','Databricks','Delta Lake','Flink','Elasticsearch',
-  'OpenAI API','LangChain','Pinecone','Spark Streaming','Hive',
-  'Presto','Trino','Great Expectations','Prefect','dbt Cloud',
-  'AWS Glue','AWS Lambda','GCP','Azure','Looker','Tableau'
+  'Agentic AI','RAG','Groq','OpenAI API','HuggingFace',
+  'Twilio','Deepgram','ElevenLabs','LLM Evaluation','Prompt Engineering',
+  'BERT','DistilBERT','pgvector','Vector Databases','Python',
+  'PyTorch','scikit-learn','LightGBM','FastAPI','Node.js',
+  'PostgreSQL','MySQL','Redis','Apache Airflow','Docker',
+  'AWS S3','AWS Lambda','WebSockets','CI/CD','Railway'
 ];
 
 const MAX_NODES = 16;

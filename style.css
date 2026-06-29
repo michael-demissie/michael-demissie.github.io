@@ -2,16 +2,16 @@
    CSS VARIABLES — change colors/fonts here
    ============================================ */
 :root {
-  --navy:       #0a0f1e;
-  --navy-mid:   #0e1628;
-  --navy-light: #162040;
-  --navy-card:  #111827;
-  --gold:       #c9a84c;
-  --gold-light: #e8c97a;
-  --gold-dim:   #8a6d2f;
-  --white:      #f0f4ff;
-  --muted:      #8892a4;
-  --border:     rgba(201, 168, 76, 0.15);
+  --navy:       #1b2430;
+  --navy-mid:   #232e3d;
+  --navy-light: #313f52;
+  --navy-card:  #283443;
+  --gold:       #d4a655;
+  --gold-light: #f0c878;
+  --gold-dim:   #9c7a3e;
+  --white:      #f4f1ea;
+  --muted:      #a3acb8;
+  --border:     rgba(212, 166, 85, 0.18);
   --font-display: 'Cormorant Garamond', serif;
   --font-mono:    'DM Mono', monospace;
   --font-body:    'Outfit', sans-serif;
@@ -48,7 +48,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem 4rem;
-  background: rgba(10, 15, 30, 0.85);
+  background: rgba(27, 36, 48, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -776,7 +776,7 @@ footer {
    HERO TERMINAL
    ============================================ */
 .hero-terminal-wrap {
-  background: rgba(10, 15, 30, 0.95);
+  background: rgba(27, 36, 48, 0.95);
   border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
@@ -952,7 +952,7 @@ footer {
     left: 0;
     right: 0;
     flex-direction: column;
-    background: rgba(10,15,30,0.98);
+    background: rgba(27,36,48,0.98);
     border-bottom: 1px solid var(--border);
     padding: 1rem 0;
     gap: 0;
