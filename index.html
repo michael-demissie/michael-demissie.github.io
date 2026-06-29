@@ -384,12 +384,12 @@
         </div>
         <div class="project-body">
           <div class="project-info">
-            <h3 class="project-title">Distributed Microservices Pipeline</h3>
-            <p class="project-subtitle">Real-Time DC Metro Backend Across Five Microservices</p>
-            <p class="project-desc">Designed and built a production real-time backend processing 580,000+ rows/day across five containerized microservices. Ingested live transit data from the WMATA API on a 60-second poll cycle, orchestrated the services with Airflow (including rolling 24-hour retention), and deployed the full system end-to-end with Docker on Railway — architected for correctness, efficiency, and reliability.</p>
+            <h3 class="project-title">DC Metro Real-Time Arrivals Pipeline</h3>
+            <p class="project-subtitle">Live Train Arrival Tracking Across All DC Metro Stations</p>
+            <p class="project-desc">Built a real-time data pipeline that polls the WMATA Metro API every 60 seconds across all DC Metro stations, storing roughly 580,000 arrival rows per day in PostgreSQL. An Express REST API serves deduped, latest-per-station arrivals to an auto-refreshing dashboard with color-coded line badges and station search. A separate Apache Airflow DAG runs daily to purge records older than 24 hours, keeping the database lean on a rolling retention window. The full stack — poller, database, API, dashboard, and Airflow — is containerized with Docker Compose and deployed on Railway.</p>
             <div class="project-tags">
-              <span>Node.js</span><span>PostgreSQL</span><span>Apache Airflow</span>
-              <span>Docker</span><span>Express</span><span>Railway</span><span>WMATA API</span>
+              <span>Node.js</span><span>PostgreSQL</span><span>Express</span>
+              <span>Apache Airflow</span><span>Docker</span><span>Railway</span><span>WMATA API</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/michael-demissie/dc-metro-pipeline" target="_blank" class="link-btn">
