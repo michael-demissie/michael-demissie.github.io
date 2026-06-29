@@ -116,13 +116,13 @@ drawPipeline();
 // Typewriter
 // ============================================
 const twLines = [
-  '> designing end-to-end data pipelines...',
-  '> building and deploying ML models to production...',
-  '> architecting cloud-native data infrastructure...',
-  '> transforming raw data into business intelligence...',
-  '> engineering real-time and batch data systems...',
-  '> building APIs that serve data at scale...',
-  '> automating workflows with Airflow and Docker...',
+  '> building real-time voice agents and RAG pipelines...',
+  '> evaluating and training frontier LLMs on technical tasks...',
+  '> shipping production ML models end to end...',
+  '> architecting backend systems and APIs at scale...',
+  '> freelancing on AI-powered products, start to finish...',
+  '> orchestrating agentic workflows with Docker and Airflow...',
+  '> debugging the systems I build, line by line...',
 ];
 let twIdx = 0;
 const twEl = document.getElementById('twText');
