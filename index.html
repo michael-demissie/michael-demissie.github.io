@@ -447,7 +447,7 @@
           <div class="project-info">
             <h3 class="project-title">DocuQuery</h3>
             <p class="project-subtitle">Production RAG Backend &amp; AI Document Assistant</p>
-            <p class="project-desc">Built a full-stack RAG application where users ask natural-language questions and receive streaming, document-grounded answers. Engineered the FastAPI backend with two modes — a Personal Assistant for private PDF/TXT uploads with session isolation and 24hr auto-deletion, and a DC Tech Jobs mode pre-loaded with 85+ federal job postings refreshed daily via Airflow. Implemented the full retrieval stack: document chunking, HuggingFace embeddings, pgvector storage with HNSW index, and Groq LLM streaming behind an nginx frontend.</p>
+            <p class="project-desc">Built a full-stack RAG application where users ask natural-language questions and receive streaming, document-grounded answers. Engineered the FastAPI backend with two modes — a Personal Assistant for private PDF/TXT uploads with session isolation and 24hr auto-deletion, and a DC Tech Jobs mode pre-loaded with federal job postings ingested daily via an Airflow DAG from the USAJobs API. Implemented the full retrieval stack: 500-word chunking with overlap, HuggingFace all-MiniLM-L6-v2 embeddings, PostgreSQL + pgvector with an HNSW index for fast similarity search, and token-by-token streaming from Groq's llama-3.1-8b-instant.</p>
             <div class="project-tags">
               <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>pgvector</span>
               <span>HuggingFace</span><span>Groq</span><span>Apache Airflow</span><span>Docker</span><span>Railway</span>
