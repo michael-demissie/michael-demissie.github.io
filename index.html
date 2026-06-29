@@ -353,11 +353,11 @@
         <div class="project-body">
           <div class="project-info">
             <h3 class="project-title">FinResolve</h3>
-            <p class="project-subtitle">AI-Powered Complaint Routing — ML Training &amp; Backend</p>
-            <p class="project-desc">Trained and fine-tuned DistilBERT and LightGBM models to classify and route 1M+ financial complaints to the correct department, reaching 88% accuracy. Engineered a label pipeline generating 812K training samples across 9 departments, then deployed the trained models into production behind a FastAPI service with JWT auth and role-based dashboards. Containerized the full system with Docker, with automated model artifact versioning on AWS S3.</p>
+            <p class="project-subtitle">AI Complaint Routing &amp; Priority Triage for CFPB Consumer Complaints</p>
+            <p class="project-desc">Built an end-to-end ML platform that ingests free-text consumer complaints from the CFPB's 1M+ row complaint database, routes each to the correct department with a fine-tuned DistilBERT classifier (9 categories), and assigns a priority level (critical / high / standard) using a TF-IDF + LightGBM pipeline trained on labels from a rule-based scoring system covering fraud keywords, legal references, and harassment signals. Reached 88% overall priority accuracy on a 203K-sample held-out test set. Deployed behind a FastAPI service with JWT auth and three role-based views (customer, department operator, and a reviewer queue for low-confidence predictions), containerized with Docker, with the BERT model versioned on AWS S3. Co-built as part of a graduate Applied Machine Learning course team project at George Washington University.</p>
             <div class="project-tags">
-              <span>Python</span><span>Apache Airflow</span><span>PostgreSQL</span>
-              <span>AWS S3</span><span>Docker</span><span>FastAPI</span><span>LightGBM</span><span>Render</span>
+              <span>Python</span><span>DistilBERT</span><span>LightGBM</span>
+              <span>FastAPI</span><span>PostgreSQL</span><span>AWS S3</span><span>Docker</span><span>scikit-learn</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/michael-demissie/complaint-routing-ml" target="_blank" class="link-btn">
